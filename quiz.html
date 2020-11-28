@@ -13,11 +13,11 @@
   <link rel="stylesheet" href="css/styles.css">
 
 <!-- https://stackoverflow.com/questions/6169666/how-to-resize-an-image-to-fit-in-the-browser-window -->
-	
 </head>
 
 <body>  
-  
+
+<main>
 <article> 
 <div class="imgbox">
   <p>
@@ -27,16 +27,20 @@
 
 </div>
 </article>
+</main>
 
 <nav>
   <p>
     <button type="button" class="myButton" onclick="onPrevious()" accesskey="n">Zurück</button>
     <button type="button" class="myButton" onclick="onNext()">Weiter</button>
     <button type="button" class="myButton" onclick="onQuit()">Ende</button></p>
+</nav>
+
+<aside>
 <div><details id="mydetails"><summary>Klicke hier, um zu erfahren was du siehst!</summary>
 <div id="beschreibung">nix</div>
 </details></div>
-</nav>
+</aside>
 
 <script src="quizscript.js">
 </script>

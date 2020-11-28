@@ -10,41 +10,9 @@
   <meta name="description" content="Quiz">
   <meta name="author" content="someone">
 
-  <link rel="stylesheet" href="css/styles.css?v=1.0">
+  <link rel="stylesheet" href="css/styles.css">
 
 <!-- https://stackoverflow.com/questions/6169666/how-to-resize-an-image-to-fit-in-the-browser-window -->
-
-    <style>
-
-        body {
-            margin: 0;
-            padding: 0;
-            background: black;
-            color: white;
-        }
-        .imgbox {
-            display: grid;
-            height: 80%;
-            text-align:center
-        }
-        .center-fit {
-            max-width: 85%;
-            max-height: 85vh;
-            margin: auto;
-        }
-        nav {
-          text-align:center;
-        }
-        #beschreibung {
-          font-weight:bold;
-          color:white;
-        }
-        #mydetails {
-          color:gray;
-        }
-
-		
-    </style>	
 	
 </head>
 
@@ -62,9 +30,9 @@
 
 <nav>
   <p>
-    <button type="button" onclick="onPrevious()" accesskey="n">Zurück</button>
-    <button type="button" onclick="onNext()">Weiter</button>
-    <button type="button" onclick="onQuit()">Ende</button></p>
+    <button type="button" class="myButton" onclick="onPrevious()" accesskey="n">Zurück</button>
+    <button type="button" class="myButton" onclick="onNext()">Weiter</button>
+    <button type="button" class="myButton" onclick="onQuit()">Ende</button></p>
 <div><details id="mydetails"><summary>Klicke hier, um zu erfahren was du siehst!</summary>
 <div id="beschreibung">nix</div>
 </details></div>

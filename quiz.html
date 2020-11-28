@@ -1,0 +1,77 @@
+<!doctype html>
+
+<!-- Template from https://www.sitepoint.com/a-basic-html5-template/ -->
+
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+
+  <title>Ikonographie Quiz</title>
+  <meta name="description" content="Quiz">
+  <meta name="author" content="someone">
+
+  <link rel="stylesheet" href="css/styles.css?v=1.0">
+
+<!-- https://stackoverflow.com/questions/6169666/how-to-resize-an-image-to-fit-in-the-browser-window -->
+
+    <style>
+
+        body {
+            margin: 0;
+            padding: 0;
+            background: black;
+            color: white;
+        }
+        .imgbox {
+            display: grid;
+            height: 80%;
+            text-align:center
+        }
+        .center-fit {
+            max-width: 85%;
+            max-height: 85vh;
+            margin: auto;
+        }
+        nav {
+          text-align:center;
+        }
+        #beschreibung {
+          font-weight:bold;
+          color:white;
+        }
+        #mydetails {
+          color:gray;
+        }
+
+		
+    </style>	
+	
+</head>
+
+<body>  
+  
+<article> 
+<div class="imgbox">
+  <p>
+    <img id = "bild" class="center-fit" src="" alt="" />
+    <img id = "preloadbild" width="0px" height="0px" src=""/>
+  </p>
+
+</div>
+</article>
+
+<nav>
+  <p>
+    <button type="button" onclick="onPrevious()" accesskey="n">Zurück</button>
+    <button type="button" onclick="onNext()">Weiter</button>
+    <button type="button" onclick="onQuit()">Ende</button></p>
+<div><details id="mydetails"><summary>Klicke hier, um zu erfahren was du siehst!</summary>
+<div id="beschreibung">nix</div>
+</details></div>
+</nav>
+
+<script src="quizscript.js">
+</script>
+	
+</body>
+</html>

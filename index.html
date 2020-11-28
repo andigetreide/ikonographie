@@ -1,0 +1,87 @@
+<!doctype html>
+
+<!-- Template from https://www.sitepoint.com/a-basic-html5-template/ -->
+
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+
+  <title>Ikonographie Quiz</title>
+  <meta name="description" content="Quiz">
+  <meta name="author" content="someone">
+
+  <link rel="stylesheet" href="css/styles.css?v=1.0">
+  
+  <style>
+  body {
+    width: 80%;
+    height: 80%;
+    padding: 12px 20px;
+    box-sizing: border-box;
+    border: 0px solid #ccc;
+    border-radius: 4px;
+    background-color: #f8f8f8;
+    resize: none;
+    font-family: "Arial";
+    justify-content: center;
+    background: gray;
+    color: white;
+  }
+
+  h1 {
+    
+  }
+
+
+  </style>
+  
+</head>
+
+<body>  
+  
+<h1>Ikonographie Quiz</h1>
+<br>
+
+<form action="quiz.html">
+<input type="checkbox" name="all" value="true" checked="true" onclick="toggle(this)">
+<label for="all"> Alle auswählen</label><br>
+
+&nbsp;&nbsp;&nbsp;&nbsp;<input type="checkbox" name="lec" value="vo01" checked="true">
+<label for="vo01"> VO01 Einführung</label><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<input type="checkbox" name="lec" value="vo02" checked="true">
+<label for="vo02"> VO02 Altes Testament</label><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<input type="checkbox" name="lec" value="vo03" checked="true">
+<label for="vo03"> VO03 Kindheit und öffentliches Wirken Christi</label><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<input type="checkbox" name="lec" value="vo04" checked="true">
+<label for="vo04"> VO04 Passion Christi</label><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<input type="checkbox" name="lec" value="vo05" checked="true">
+<label for="vo05"> VO05 Auferstehung und Erhöhung Christi, Jüngstes Gericht, Typologie</label><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<input type="checkbox" name="lec" value="vo06" checked="true">
+<label for="vo06"> VO06 Maria und Angehörige</label><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<input type="checkbox" name="lec" value="vo07" checked="true">
+<label for="vo07"> VO07 Heilige</label><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<input type="checkbox" name="lec" value="vo08" checked="true">
+<label for="vo08"> VO08 Profane Ikonographie: Geschichte, Dichtung, Genre</label><br>
+<br>
+<input type="checkbox" name="random" value="true" checked="true">
+<label for="random"> Zufallsreihenfolge</label><br>
+<input type="checkbox" name="repeat" value="true" checked="true">
+<label for="repeat"> Bilder wiederholen</label><br>
+<br>
+
+<input type="submit" value="Ikonographie Quiz starten">
+</form> 
+
+
+<script>
+
+function toggle(source) {
+  var checkboxes = document.getElementsByName('lec');
+  for(var checkbox of checkboxes)
+    checkbox.checked = source.checked;
+}
+
+</script>
+	
+</body>
+</html>

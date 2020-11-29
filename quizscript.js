@@ -6,7 +6,6 @@ var randomized = false;
 var repeatpics = true;
 
 var artworks;
-var nextIndex;
 
 var xmlhttp = new XMLHttpRequest();
 xmlhttp.onreadystatechange = function() {
@@ -64,9 +63,6 @@ function myParse(allLecturesData) {
             artworks = artworks.concat(allLecturesData[lecture]);
     }
     
-    for(var art of artworks) {
-        // console.log(art);
-    }
 }
 
 function randomizeArray(arr) {
@@ -82,6 +78,20 @@ function randomizeArray(arr) {
     return newarr;
 }
 
+// does not work
+function randomizeArrayNOTWORKING(arr) {
+
+    var newarr = [];
+    
+    function insert(element, myarr, index) {
+        return myarr.slice(0, index) + element + myarr.slice(index, myarr.length);
+    }
+   
+    arr.forEach(e => {newarr = insert(e, newarr, Math.floor(Math.random()*(newarr.length+1)))});
+    return newarr;
+    
+}
+
 function startQuiz() {
     
     // console.log("Nonrandomized: " + artworks);
@@ -89,24 +99,51 @@ function startQuiz() {
         artworks = randomizeArray(artworks);
     // console.log("Randomized: " + artworks);
 
-    nextIndex = 0;
-
     showNextArtwork();    
  
 }   
 
 function onNext() {
+
+    // console.log("Vor rollforward: " + artworks);
+    artworks = rollforward(artworks);
+    // console.log("Nach rollforward: " + artworks);
+    
+    if(repeatpics == false) {
+        artworks.pop();
+    }
+
+    showNextArtwork();
+    
+}
+
+function onNextNotKnown() {
+    
+    artworks = rollforward(artworks);
+
     showNextArtwork();
 }
 
-// turnaround with repeatpics does not yet work
+function rollforward(arr) {
+    if(arr.length > 0)
+        return Array().concat(arr.slice(1, arr.length), arr[0]);
+    else
+        return Array(0);
+}
+
+function rollback(arr) {
+    if(arr.length > 0)
+        return Array().concat(arr[arr.length-1], arr.slice(0, arr.length-1));
+    else
+        return Array(0);
+}
+
 function onPrevious() {
-    if(nextIndex == 1)
-        nextIndex = 0;
-        else
-            if(nextIndex >= 2)
-                nextIndex -= 2;
     
+    // console.log("Vor rollback: " + artworks);
+    artworks = rollback(artworks);
+    // console.log("Nach rollback: " + artworks);
+
     showNextArtwork();
 }
 
@@ -116,31 +153,29 @@ function onQuit() {
 
 function showNextArtwork() {
     
-    if(nextIndex == artworks.length) {
+    if(artworks.length == 0) {
         alert("Gratulation, du bist fertig!");
         // console.log("You are done!");
     } else {
         
-        displayPicAndText("pics/" + artworks[nextIndex] + ".png", "pics/" + artworks[nextIndex] + ".txt");
+        displayPicAndText("pics/" + artworks[0] + ".png", "pics/" + artworks[0] + ".txt");
         
         document.getElementById("mydetails").removeAttribute("open");
         
-        // console.log("Showing " + artworks[nextIndex]);
-        
-        nextIndex++;
-        
         // preload next image
-        if (nextIndex<artworks.length) {
-            document.getElementById("preloadbild").setAttribute("src", "pics/" + artworks[nextIndex] + ".png");
+        if (artworks.length >= 2) {
+            document.getElementById("preloadbild").setAttribute("src", "pics/" + artworks[1] + ".png");
         }
-            
+    
     }
 
-    if(nextIndex == artworks.length && repeatpics == true) {
+    document.getElementById("anzahl").innerHTML = "Bilder: " + artworks.length;
+    
+    /*if(nextIndex == artworks.length && repeatpics == true) {
         if(randomized)
             artworks = randomizeArray(artworks);
         nextIndex = 0;
-    }
+    }*/
 }
 
 

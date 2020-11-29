@@ -32,7 +32,8 @@
 <nav>
   <p>
     <button type="button" class="myButton" onclick="onPrevious()" accesskey="n">Zurück</button>
-    <button type="button" class="myButton" onclick="onNext()">Weiter</button>
+    <button type="button" class="myButton" onclick="onNext()">Klar, weiter</button>
+        <button type="button" class="myButton" onclick="onNextNotKnown()">Nicht gewusst</button>
     <button type="button" class="myButton" onclick="onQuit()">Ende</button></p>
 </nav>
 
@@ -40,6 +41,7 @@
 <div><details id="mydetails"><summary>Klicke hier, um zu erfahren was du siehst!</summary>
 <div id="beschreibung">nix</div>
 </details></div>
+<p id="anzahl"></p>
 </aside>
 
 <script src="quizscript.js">

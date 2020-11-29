@@ -37,13 +37,16 @@ aside {
     margin: auto;
 }
 
-
 #beschreibung {
   font-weight:bold;
   color:white;
 }
 
 #mydetails {
+  color:gray;
+}
+
+#anzahl {
   color:gray;
 }
 

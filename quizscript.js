@@ -6,6 +6,8 @@ var randomized = false;
 var repeatpics = true;
 
 var artworks;
+var artworkshistory;
+const MAXHISTORY = 30;
 
 var xmlhttp = new XMLHttpRequest();
 xmlhttp.onreadystatechange = function() {
@@ -32,6 +34,7 @@ function myParse(allLecturesData) {
     // This must be removed!
     var selectedLectures = [];
     artworks = [];
+    artworkshistory = [];
 
     
     if(findGetParameter("repeat") === "true")
@@ -78,19 +81,6 @@ function randomizeArray(arr) {
     return newarr;
 }
 
-// does not work
-function randomizeArrayNOTWORKING(arr) {
-
-    var newarr = [];
-    
-    function insert(element, myarr, index) {
-        return myarr.slice(0, index) + element + myarr.slice(index, myarr.length);
-    }
-   
-    arr.forEach(e => {newarr = insert(e, newarr, Math.floor(Math.random()*(newarr.length+1)))});
-    return newarr;
-    
-}
 
 function startQuiz() {
     
@@ -105,6 +95,10 @@ function startQuiz() {
 
 function onNext() {
 
+    if(artworkshistory.length == MAXHISTORY)
+        artworkshistory.shift();
+    artworkshistory.push(artworks);
+    
     // console.log("Vor rollforward: " + artworks);
     artworks = rollforward(artworks);
     // console.log("Nach rollforward: " + artworks);
@@ -118,6 +112,10 @@ function onNext() {
 }
 
 function onNextNotKnown() {
+
+    if(artworkshistory.length == MAXHISTORY)
+        artworkshistory.shift();
+    artworkshistory.push(artworks);
     
     artworks = rollforward(artworks);
 
@@ -131,6 +129,7 @@ function rollforward(arr) {
         return Array(0);
 }
 
+
 function rollback(arr) {
     if(arr.length > 0)
         return Array().concat(arr[arr.length-1], arr.slice(0, arr.length-1));
@@ -138,23 +137,31 @@ function rollback(arr) {
         return Array(0);
 }
 
+
 function onPrevious() {
     
+    if(artworkshistory.length > 0) {
+        artworks = artworkshistory.pop();
+        showNextArtwork();
+    }
+    
     // console.log("Vor rollback: " + artworks);
-    artworks = rollback(artworks);
+    //artworks = rollback(artworks);
     // console.log("Nach rollback: " + artworks);
 
-    showNextArtwork();
+    //showNextArtwork();
 }
+
 
 function onQuit() {
     window.location.href = "index.html";
 }
 
+
 function showNextArtwork() {
     
     if(artworks.length == 0) {
-        alert("Gratulation, du bist fertig!");
+        alert("Gratulation, du bist fertig! Yuppie!!!");
         // console.log("You are done!");
     } else {
         
